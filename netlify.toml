@@ -1,0 +1,26 @@
+# Static site — nothing to build, publish the repo root as-is.
+[build]
+  publish = "."
+  command = ""
+
+# Long cache for fingerprint-free static assets is risky, so keep images at a
+# day and let HTML always revalidate.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Send the bare domain to www (or flip this in Netlify's domain settings if
+# you would rather serve the apex).
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = false
