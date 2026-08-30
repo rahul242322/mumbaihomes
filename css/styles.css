@@ -751,22 +751,27 @@ details p { margin: 0; padding: 1rem 1.2rem; color: var(--ink-2); font-size: .93
   .cta-actions .btn { flex: 1; }
   .specs { grid-template-columns: 1fr; }
 
-  /* Pricing table becomes stacked cards instead of scrolling sideways. */
+  /* Compact two-line cards. A row per field made each unit roughly 220px
+     tall, so seven of them turned the price list into a long scroll. */
   .table-wrap { border: 0; box-shadow: none; overflow: visible; background: transparent; }
   .price-table { min-width: 0; }
   .price-table thead { display: none; }
   .price-table tr {
-    display: block; background: #fff !important; border: 1px solid var(--line);
-    border-radius: var(--r); margin-bottom: .9rem; padding: .4rem .2rem; box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "type price" "area price" "cta cta";
+    align-items: center; column-gap: .9rem;
+    background: #fff !important; border: 1px solid var(--line);
+    border-radius: var(--r); margin-bottom: .6rem; padding: .8rem .95rem;
+    box-shadow: var(--shadow);
   }
-  .price-table td { display: flex; justify-content: space-between; gap: 1rem; align-items: center; border-bottom: 1px solid var(--line-2); }
-  .price-table td:last-child { border-bottom: 0; text-align: center; }
-  .price-table td::before {
-    content: attr(data-label); color: var(--ink-3);
-    font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; font-weight: 700;
-  }
-  .price-table td:last-child::before { display: none; }
-  .price-table td:last-child .btn { width: 100%; }
+  .price-table td { display: block; border: 0; padding: 0; }
+  .price-table td::before { display: none; }   /* field labels are redundant here */
+  .price-table td[data-label="Type"]  { grid-area: type;  font-size: 1rem; }
+  .price-table td[data-label="Area"]  { grid-area: area;  font-size: .82rem; color: var(--ink-3); }
+  .price-table td[data-label="Price"] { grid-area: price; font-size: 1rem; text-align: right; }
+  .price-table td:last-child { grid-area: cta; margin-top: .65rem; text-align: center; }
+  .price-table td:last-child .btn { width: 100%; padding-block: .55rem; font-size: .8rem; }
 
   .car-item { flex-basis: 82%; }
   .amen-carousel .amen-track { grid-auto-columns: 100%; }
