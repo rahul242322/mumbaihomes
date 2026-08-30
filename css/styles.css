@@ -309,12 +309,13 @@ p { margin: 0 0 1rem; }
 }
 .tel-wrap input { border-radius: 0 var(--r-sm) var(--r-sm) 0 !important; }
 
+/* Pre-ticked, so it reads as fine print rather than a hurdle. */
 .consent {
   grid-template-columns: auto 1fr; align-items: start; gap: .5rem !important;
-  font-weight: 400; font-size: .72rem; color: var(--ink-3); line-height: 1.4;
+  font-weight: 400; font-size: .68rem; color: var(--ink-3); line-height: 1.4;
   margin-top: .1rem;
 }
-.consent input { margin-top: .1rem; width: 15px; height: 15px; accent-color: var(--copper); }
+.consent input { margin-top: .1rem; width: 15px; height: 15px; accent-color: var(--copper); flex: none; }
 
 /* No reserved height while empty — it only pushed the dialog taller. */
 .form-status { margin: 0; font-size: .82rem; }

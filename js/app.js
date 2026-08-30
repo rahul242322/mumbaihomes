@@ -318,7 +318,10 @@
       project:       P.brand.projectName + ' — ' + P.brand.locality,
       source:        form.dataset.source || 'Website',
       page:          location.href,
-      referrer:      document.referrer || 'direct'
+      referrer:      document.referrer || 'direct',
+      // Stored with every lead so there is a record of exactly what was
+      // agreed to, alongside the submittedAt timestamp.
+      consent:       window.CONSENT_TEXT || 'Agreed to be contacted'
     };
   }
 
@@ -368,7 +371,7 @@
 
       if (!validate(form)) {
         status.className = 'form-status err';
-        status.textContent = 'Please enter your name, a valid 10-digit mobile number, and tick the consent box.';
+        status.textContent = 'Please enter your name, a valid 10-digit mobile number, and leave the consent box ticked.';
         return;
       }
 
