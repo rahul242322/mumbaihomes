@@ -91,9 +91,10 @@
 
   /* Shared by the gallery (one row of tiles) and the amenities (two rows in
      one frame). Both advance by exactly one column. */
-  function makeCarousel(rootSel, itemSel, interval) {
+  function makeCarousel(rootSel, itemSel, interval, opts) {
     var root = $(rootSel);
     if (!root) return;
+    opts = opts || {};
     var track = $('.car-track', root);
 
     // One tile plus the gap, so each advance lands on a tile edge.
@@ -109,15 +110,19 @@
       track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + step(), behavior: 'smooth' });
     }
 
-    var timer = null;
+    var timer = null, visible = false;
+
+    // Always restart the countdown, so becoming visible gives a full interval
+    // rather than inheriting whatever was left of a previous one.
     function start() {
-      if (timer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      stop();
+      if (!visible || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       timer = setInterval(advance, interval || 3500);
     }
     function stop() { clearInterval(timer); timer = null; }
 
-    // Hand control back to the visitor the moment they touch it, and resume
-    // once they have moved on.
+    // Hand control back to the visitor when they actually drive the carousel,
+    // and resume once they have moved on.
     function pauseFor(ms) {
       stop();
       clearTimeout(pauseFor.t);
@@ -131,27 +136,48 @@
       track.scrollBy({ left: step(), behavior: 'smooth' }); pauseFor();
     });
 
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
-    track.addEventListener('touchstart', function () { pauseFor(9000); }, { passive: true });
-    track.addEventListener('wheel', function () { pauseFor(9000); }, { passive: true });
+    if (opts.pauseOnHover) {
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+    }
+
+    // Only a sideways gesture is the visitor driving this carousel. Scrolling
+    // the page vertically with the pointer over it is not, and treating it as
+    // such was silently killing autoplay for seconds at a time.
+    track.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) pauseFor(9000);
+    }, { passive: true });
+
+    var tx = 0, ty = 0;
+    track.addEventListener('touchstart', function (e) {
+      tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+    }, { passive: true });
+    track.addEventListener('touchmove', function (e) {
+      if (Math.abs(e.touches[0].clientX - tx) > Math.abs(e.touches[0].clientY - ty)) pauseFor(9000);
+    }, { passive: true });
 
     document.addEventListener('visibilitychange', function () {
       document.hidden ? stop() : start();
     });
 
-    // Only run while the gallery is actually on screen.
+    // Run only while the carousel is on screen. threshold 0 so it arms the
+    // moment any part of it appears — a tall frame needs a lot of scrolling
+    // before 25% of it is visible.
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
-        entries[0].isIntersecting ? start() : stop();
-      }, { threshold: 0.25 }).observe(root);
+        visible = entries[0].isIntersecting;
+        visible ? start() : stop();
+      }, { threshold: 0 }).observe(root);
     } else {
+      visible = true;
       start();
     }
   }
 
-  makeCarousel('#galleryCarousel', '.car-item', 3000);
-  makeCarousel('#amenityCarousel', '.amenity', 2000);
+  makeCarousel('#galleryCarousel', '.car-item', 3000, { pauseOnHover: true });
+  // Amenities keep moving even under the pointer — it is a scanning strip,
+  // not something visitors stop to inspect.
+  makeCarousel('#amenityCarousel', '.amenity', 2000, { pauseOnHover: false });
 
   /* --------------------------------------------------------------- lightbox */
 
