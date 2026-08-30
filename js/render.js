@@ -464,7 +464,7 @@
           'Project MahaRERA Registration No.: <strong>' + esc(l.projectRera) + '</strong> — ' +
           'verify both at <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener">maharera.mahaonline.gov.in</a></p>' +
         '<p>This website is operated by ' + esc(l.operatedBy) + '. ' + esc(l.disclaimer) + '</p>' +
-        '<p class="copyright">© <span id="year"></span> ' + esc(b.siteName) + '. All rights reserved. ' +
+        '<p class="copyright">© <span id="year"></span> ' + esc(b.siteName) + ' · ' +
           esc(b.projectName) + ' is a project by ' + esc(b.developer) + '.</p>' +
       '</div>');
   })();

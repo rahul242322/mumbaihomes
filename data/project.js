@@ -314,7 +314,10 @@ window.PROJECT = {
     agentGst:    "",                 // optional, shown when set
     projectRera: "Coming Soon",      // the developer's project registration number
     operatedBy:  "Mumbai Homes, an independent MahaRERA-registered real estate agent",
-    disclaimer:  "This is not the official website of the developer. It is operated by an independent marketing partner and is intended solely for informational purposes; nothing on it constitutes an offer, invitation or contract, nor an offer of services by the developer. The content — images, plans, areas, amenities, specifications and pricing — is indicative and is sourced from the developer; images are artistic impressions and may not accurately reflect the finished product. All prices are quoted ++, are exclusive of stamp duty, registration, GST and other statutory charges, are subject to alteration without notice, and availability cannot be guaranteed. Purchasers must rely solely on the particulars registered with MahaRERA and on the executed agreement for sale, and are recommended to contact the developer directly for accurate and up-to-date information. All trademarks, project names and logos are the property of their respective owners and are used here for identification only. By submitting your details you consent to being contacted by us and our representatives by phone, SMS, email or WhatsApp about this and similar projects, and acknowledge that this consent overrides any DNC/NDNC registration."
+    /* Kept deliberately short. Every clause here is load-bearing: not-official,
+       indicative content, taxes extra, rely on MahaRERA, trademarks, and the
+       DNC/NDNC consent that lets you legally call the leads you collect. */
+    disclaimer:  "Not the developer's official website. Information only — nothing here is an offer or contract. Images are artistic impressions; areas, prices and specifications are indicative, exclusive of taxes and statutory charges, and may change without notice. Rely on the MahaRERA-registered particulars and the agreement for sale. All trademarks and project names belong to their owners. By submitting your details you agree to be contacted by phone, SMS, email or WhatsApp, overriding DNC/NDNC."
   }
 };
 
