@@ -54,7 +54,7 @@ window.PROJECT = {
   /* See README.md §3. Leave "" to disable a channel. WhatsApp is always on
      and is the automatic fallback, so the form never loses a lead.          */
   leads: {
-    web3formsKey: "",                // https://web3forms.com  → email
+    web3formsKey: "1ff01470-b72a-40a4-a5b3-7032ce46fe9c",  // web3forms.com → email
     sheetsUrl:    ""                 // Apps Script /exec URL  → Google Sheet
   },
 
