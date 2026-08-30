@@ -306,7 +306,11 @@ window.PROJECT = {
      must display that agent registration number on its advertising.
      Fill in `agentRera` before you run a single ad.                          */
   legal: {
-    agentRera:   "TODO — YOUR MahaRERA AGENT REGISTRATION NUMBER",
+    /* REPLACE with your MahaRERA agent registration number as soon as it is
+       issued. Until then this reads as a neutral status rather than a
+       placeholder — but note that advertising a registered project without an
+       agent registration is not permitted, so treat this as temporary. */
+    agentRera:   "Registration in process",
     agentGst:    "",                 // optional, shown when set
     projectRera: "Coming Soon",      // the developer's project registration number
     operatedBy:  "Mumbai Homes, an independent MahaRERA-registered real estate agent",
