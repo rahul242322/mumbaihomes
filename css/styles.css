@@ -742,9 +742,36 @@ details p { margin: 0; padding: 1rem 1.2rem; color: var(--ink-2); font-size: .93
   .nav { top: 72px; }
   html { scroll-padding-top: 78px; }
 
+  /* The clamp() floors above were sized for desktop and never shrink further,
+     which reads as "zoomed in" on a 320-380px phone. Step the whole hero
+     down explicitly. */
   .hero { min-height: 0; }
-  .hero-grid { padding: 4.5rem 0 3rem; }
+  .hero-grid { padding: 3.4rem 0 2.4rem; }
   .visit-card, .modal-card { padding: 1.4rem 1.2rem; }
+
+  .badge { font-size: .6rem; padding: .28rem .8rem; margin-bottom: .9rem; letter-spacing: .12em; }
+  .h1-logo { margin-bottom: .8rem; }
+  .h1-logo img { height: clamp(56px, 19vw, 90px); }
+  .by { font-size: .84rem; margin-bottom: 1.1rem; }
+
+  .offer { padding: .75rem .85rem; margin-bottom: 1.1rem; min-width: 0; }
+  .offer-title { font-size: .84rem; margin-bottom: .3rem; }
+  .offer ul { gap: .15rem .9rem; }
+  .offer li { font-size: .78rem; }
+
+  .config-line { font-size: .88rem; }
+  .price { font-size: 1.85rem; margin-bottom: 1rem; }
+  .price span { font-size: .7rem; vertical-align: .2em; }
+  .psf { font-size: .62rem; padding: .3rem .8rem; margin: -.5rem 0 1.2rem; letter-spacing: .06em; }
+
+  .facts { margin-bottom: 1.3rem; }
+  .facts li { padding: .6rem .45rem; }
+  .facts strong { font-size: .88rem; }
+  .facts span { font-size: .56rem; letter-spacing: .05em; }
+
+  .hero-copy .fineprint { font-size: .68rem; margin-top: .9rem; }
+  .sec-title { font-size: 1.55rem; }
+  .sec-sub, .body-lg { font-size: .92rem; }
   .field-row { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
   .cta-actions { width: 100%; }
