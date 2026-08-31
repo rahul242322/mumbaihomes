@@ -98,12 +98,20 @@ p { margin: 0 0 1rem; }
 
 /* ------------------------------------------------------------------ buttons */
 
+/* A registered custom property is what makes the angle animatable — without
+   @property the browser cannot interpolate an <angle> in a gradient. */
+@property --btn-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 /* Two background layers per button:
-     1. --fill  painted to the padding box  = the button face
-     2. a strip painted to the border box   = the border, with one bright band
-   Sliding layer 2 sideways runs that band around the edge. Done this way the
-   effect needs no pseudo-elements, so it works on <a> and <button> alike and
-   never interferes with the label. */
+     1. --fill  painted to the padding box = the button face
+     2. a conic gradient to the border box = the border, with one bright arc
+   Rotating layer 2 sends that arc around the perimeter. No pseudo-elements,
+   so it works on <a> and <button> alike and never touches the label.
+   Browsers without @property show a static gradient edge, which is fine. */
 .btn {
   --edge: transparent;                /* resting border colour */
   --run:  rgba(255,255,255,.95);      /* the travelling highlight */
@@ -117,24 +125,22 @@ p { margin: 0 0 1rem; }
 
   background-image:
     var(--fill),
-    linear-gradient(90deg,
-      var(--edge) 0 14%, var(--run) 23%, var(--edge) 32% 100%);
+    conic-gradient(from var(--btn-angle),
+      var(--edge) 0 72%, var(--run) 84%, var(--edge) 96% 100%);
   background-origin: padding-box, border-box;
   background-clip:  padding-box, border-box;
   background-repeat: no-repeat, no-repeat;
-  background-size: 100% 100%, 340% 100%;
-  background-position: 0 0, -120% 0;
-  animation: btn-run 3.4s linear infinite;
+  background-size: 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0;
+  animation: btn-run 2.6s linear infinite;
 }
-@keyframes btn-run {
-  from { background-position: 0 0, -120% 0; }
-  to   { background-position: 0 0, 220% 0; }
-}
+@keyframes btn-run { to { --btn-angle: 360deg; } }
 .btn:active { transform: translateY(1px); }
 
 .btn-primary {
   --fill: linear-gradient(135deg, var(--copper-lt), var(--copper));
-  --edge: rgba(255,255,255,.3);
+  --edge: rgba(255,255,255,.22);
+  --run:  #f6d492;                    /* warm gold reads on copper */
   color: #fff; box-shadow: 0 10px 24px -12px rgba(167,95,43,.85);
 }
 .btn-primary:hover { --fill: linear-gradient(135deg, var(--copper), var(--copper-dk)); }
@@ -149,9 +155,13 @@ p { margin: 0 0 1rem; }
 }
 .btn-outline-light:hover { --fill: linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16)); color: #fff; }
 
-.btn-light { --edge: rgba(21,24,28,.14); --run: var(--copper); color: var(--ink); }
+.btn-light { --edge: rgba(21,24,28,.12); --run: var(--copper); color: var(--ink); }
 
-.btn-wa { --fill: linear-gradient(#25d366, #1da851); --edge: rgba(255,255,255,.35); }
+.btn-wa {
+  --fill: linear-gradient(#25d366, #1da851);
+  --edge: rgba(255,255,255,.3);
+  --run:  #eafff1;
+}
 
 /* Quiet text link — no face, no border, so nothing to run around. */
 .btn-ghost {
