@@ -32,11 +32,11 @@ window.PROJECT = {
     monogram:      "M",
     /* The builder's logo, shown only as a credit in the About and footer
        sections — never as this site's own mark. */
-    developerLogo: "assets/veena-logo.png",
+    developerLogo: "assets/veena-logo.webp",
     /* The project's own lockup, lifted from the official brochure. Dark for
        light backgrounds, white for dark ones. */
-    projectLogo:      "assets/codename-logo-dark.png",
-    projectLogoWhite: "assets/codename-logo-white.png"
+    projectLogo:      "assets/codename-logo-dark.webp",
+    projectLogoWhite: "assets/codename-logo-white.webp"
   },
 
   /* -------------------------------------------------------------- contact */
@@ -63,7 +63,7 @@ window.PROJECT = {
     domain:      "https://mumbaihomes.co.in",
     title:       "Codename Luxury Living by Veena Developers — 2, 2.5 & 3 BHK, S.V. Road, Borivali West",
     description: "Ultra-luxury new launch by Veena Developers on S.V. Road, Borivali West. 3 iconic 40-storey towers across 3 acres, 70+ amenities on a 1,25,000 sq.ft. E-Deck. 2 BHK from ₹2.40 Cr. EOI open from ₹2 Lakhs.",
-    ogImage:     "assets/og-image.jpg",
+    ogImage:     "assets/og-image.webp",
     keywords:    "Veena Developers Borivali, Codename Luxury Living, Borivali West new launch, 2 BHK S.V. Road Borivali, 3 BHK Borivali West price, Borivali ultra luxury project"
   },
 
@@ -73,10 +73,10 @@ window.PROJECT = {
     /* Actual project renders, lifted from the official teaser film. These are
        the developer's own CGI of this project — not stock photography. */
     slides: [
-      { type: "image", src: "assets/render-pool.jpg",    alt: "Infinity pool at sunset over the Mumbai skyline" },
-      { type: "image", src: "assets/render-balcony.jpg", alt: "Panoramic city view from the balcony at dusk" },
-      { type: "image", src: "assets/render-facade.jpg",  alt: "Podium facade with vertical green screens" },
-      { type: "image", src: "assets/render-living.jpg",  alt: "Living room with skyline views" }
+      { type: "image", src: "assets/render-pool.webp",    alt: "Infinity pool at sunset over the Mumbai skyline" },
+      { type: "image", src: "assets/render-balcony.webp", alt: "Panoramic city view from the balcony at dusk" },
+      { type: "image", src: "assets/render-facade.webp",  alt: "Podium facade with vertical green screens" },
+      { type: "image", src: "assets/render-living.webp",  alt: "Living room with skyline views" }
       // Video slide example:
       // { type: "video", src: "assets/walkthrough.mp4", poster: "assets/walkthrough.jpg", alt: "Project walkthrough" }
     ],
@@ -130,7 +130,7 @@ window.PROJECT = {
       "The vertical plan puts everything in its right place: ground and first levels hold premium commercial retail showrooms, the 2nd to 8th levels are podium parking, and the 9th level opens onto a 1,25,000 sq.ft. grand E-Deck carrying over 70 world-class amenities. Residences begin above all of it, on the 10th floor, and rise to the 40th — every home lifted clear of the street, with panoramic city and green views.",
       "Layouts are spacious and smartly planned, crafted for prestige, comfort and sophistication."
     ],
-    image: "assets/eoi-creative.jpg",   // the official EOI campaign creative
+    image: "assets/eoi-creative.webp",   // the official EOI campaign creative
     /* Rendered as a highlighted "why buy" list under the specs. */
     why: [
       "Ultra-luxury residences",
@@ -173,8 +173,8 @@ window.PROJECT = {
     /* From the approved architectural drawings. Rendered deliberately blurred
        behind the CTA — the readable copy is what the sales team sends on
        request, which is the whole point of the section. */
-    { title: "Master Plan Layout", cta: "Request Master Layout Plan", image: "assets/plan-master.jpg" },
-    { title: "Unit Plan Layout",   cta: "Request Unit Layout Plans",  image: "assets/plan-unit.jpg" }
+    { title: "Master Plan Layout", cta: "Request Master Layout Plan", image: "assets/plan-master.webp" },
+    { title: "Unit Plan Layout",   cta: "Request Unit Layout Plans",  image: "assets/plan-unit.webp" }
   ],
 
   /* ------------------------------------------------------------- amenities */
@@ -183,37 +183,37 @@ window.PROJECT = {
     items: [
       /* `icon` names one of the inline SVGs in js/render.js — see ICONS there.
          An unrecognised value is printed literally, so an emoji still works. */
-      { name: "Infinity Swimming Pool",  image: "assets/amenity-pool.jpg",       icon: "pool" },
-      { name: "Private Cinema",          image: "assets/amenity-cinema.jpg",     icon: "cinema" },
-      { name: "Banquet & Party Hall",    image: "assets/amenity-banquet.jpg",    icon: "banquet" },
-      { name: "Kids Play Area",          image: "assets/amenity-kids.jpg",       icon: "kids" },
-      { name: "Basketball Court",        image: "assets/amenity-basketball.jpg", icon: "basketball" },
-      { name: "Landscaped Podium Deck",  image: "assets/amenity-deck.jpg",       icon: "tree" },
-      { name: "Designer Entrance Lobby", image: "assets/amenity-lobby.jpg",      icon: "lobby" },
-      { name: "Private Lift Lobbies",    image: "assets/amenity-lift.jpg",       icon: "lift" },
+      { name: "Infinity Swimming Pool",  image: "assets/amenity-pool.webp",       icon: "pool" },
+      { name: "Private Cinema",          image: "assets/amenity-cinema.webp",     icon: "cinema" },
+      { name: "Banquet & Party Hall",    image: "assets/amenity-banquet.webp",    icon: "banquet" },
+      { name: "Kids Play Area",          image: "assets/amenity-kids.webp",       icon: "kids" },
+      { name: "Basketball Court",        image: "assets/amenity-basketball.webp", icon: "basketball" },
+      { name: "Landscaped Podium Deck",  image: "assets/amenity-deck.webp",       icon: "tree" },
+      { name: "Designer Entrance Lobby", image: "assets/amenity-lobby.webp",      icon: "lobby" },
+      { name: "Private Lift Lobbies",    image: "assets/amenity-lift.webp",       icon: "lift" },
       /* Every amenity tile uses Pexels stock (free for commercial use, no
          attribution required) — the developer's own renders live in the hero
          slider and the gallery, where they are labelled as such. */
-      { name: "Yoga & Meditation Deck",  image: "assets/amenity-yoga.jpg",    icon: "yoga" },
-      { name: "Jogging Track",           image: "assets/amenity-jogging.jpg", icon: "running" },
-      { name: "Fully Equipped Gym",      image: "assets/amenity-gym.jpg",     icon: "gym" },
-      { name: "Senior Citizens' Corner", image: "assets/amenity-seniors.jpg", icon: "bench" }
+      { name: "Yoga & Meditation Deck",  image: "assets/amenity-yoga.webp",    icon: "yoga" },
+      { name: "Jogging Track",           image: "assets/amenity-jogging.webp", icon: "running" },
+      { name: "Fully Equipped Gym",      image: "assets/amenity-gym.webp",     icon: "gym" },
+      { name: "Senior Citizens' Corner", image: "assets/amenity-seniors.webp", icon: "bench" }
     ],
     note: "Images in this section are representative and are not renders of this project. See the Project Gallery for the developer's own renders. The full amenity list is shared on request — confirm final details against the MahaRERA registration."
   },
 
   /* --------------------------------------------------------------- gallery */
   gallery: [
-    { type: "image", src: "assets/render-pool.jpg",     alt: "Infinity pool at sunset" },
-    { type: "image", src: "assets/render-balcony.jpg",  alt: "City views from the balcony" },
-    { type: "image", src: "assets/render-living.jpg",   alt: "Living room" },
-    { type: "image", src: "assets/render-bedroom.jpg",  alt: "Master bedroom" },
-    { type: "image", src: "assets/render-facade.jpg",   alt: "Podium facade and retail frontage" },
-    { type: "image", src: "assets/render-cinema.jpg",   alt: "Private cinema" },
-    { type: "image", src: "assets/render-banquet.jpg",  alt: "Banquet hall" },
-    { type: "image", src: "assets/render-kids.jpg",     alt: "Kids play area" },
-    { type: "image", src: "assets/render-entrance.jpg", alt: "Designer entrance lobby" },
-    { type: "image", src: "assets/render-aerial.jpg",   alt: "Podium deck and sports court" }
+    { type: "image", src: "assets/render-pool.webp",     alt: "Infinity pool at sunset" },
+    { type: "image", src: "assets/render-balcony.webp",  alt: "City views from the balcony" },
+    { type: "image", src: "assets/render-living.webp",   alt: "Living room" },
+    { type: "image", src: "assets/render-bedroom.webp",  alt: "Master bedroom" },
+    { type: "image", src: "assets/render-facade.webp",   alt: "Podium facade and retail frontage" },
+    { type: "image", src: "assets/render-cinema.webp",   alt: "Private cinema" },
+    { type: "image", src: "assets/render-banquet.webp",  alt: "Banquet hall" },
+    { type: "image", src: "assets/render-kids.webp",     alt: "Kids play area" },
+    { type: "image", src: "assets/render-entrance.webp", alt: "Designer entrance lobby" },
+    { type: "image", src: "assets/render-aerial.webp",   alt: "Podium deck and sports court" }
   ],
 
   /* -------------------------------------------------------------- location */
