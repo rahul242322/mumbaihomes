@@ -98,25 +98,66 @@ p { margin: 0 0 1rem; }
 
 /* ------------------------------------------------------------------ buttons */
 
+/* Two background layers per button:
+     1. --fill  painted to the padding box  = the button face
+     2. a strip painted to the border box   = the border, with one bright band
+   Sliding layer 2 sideways runs that band around the edge. Done this way the
+   effect needs no pseudo-elements, so it works on <a> and <button> alike and
+   never interferes with the label. */
 .btn {
+  --edge: transparent;                /* resting border colour */
+  --run:  rgba(255,255,255,.95);      /* the travelling highlight */
+  --fill: linear-gradient(#fff, #fff);
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
   font: inherit; font-weight: 600; font-size: .93rem; line-height: 1;
-  padding: .85rem 1.4rem; border-radius: 999px; border: 1.5px solid transparent;
+  padding: .85rem 1.4rem; border-radius: 999px;
+  border: 2px solid transparent;
   cursor: pointer; text-decoration: none; white-space: nowrap; text-align: center;
-  transition: transform .12s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+  transition: transform .12s ease, box-shadow .18s ease, color .18s ease;
+
+  background-image:
+    var(--fill),
+    linear-gradient(90deg,
+      var(--edge) 0 14%, var(--run) 23%, var(--edge) 32% 100%);
+  background-origin: padding-box, border-box;
+  background-clip:  padding-box, border-box;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 100%, 340% 100%;
+  background-position: 0 0, -120% 0;
+  animation: btn-run 3.4s linear infinite;
+}
+@keyframes btn-run {
+  from { background-position: 0 0, -120% 0; }
+  to   { background-position: 0 0, 220% 0; }
 }
 .btn:active { transform: translateY(1px); }
+
 .btn-primary {
-  background: linear-gradient(135deg, var(--copper-lt), var(--copper));
+  --fill: linear-gradient(135deg, var(--copper-lt), var(--copper));
+  --edge: rgba(255,255,255,.3);
   color: #fff; box-shadow: 0 10px 24px -12px rgba(167,95,43,.85);
 }
-.btn-primary:hover { background: linear-gradient(135deg, var(--copper), var(--copper-dk)); }
-.btn-outline { background: #fff; border-color: var(--line); color: var(--ink); }
-.btn-outline:hover { border-color: var(--copper); color: var(--copper-dk); }
-.btn-outline-light { border-color: rgba(255,255,255,.5); color: #fff; background: rgba(255,255,255,.06); }
-.btn-outline-light:hover { background: rgba(255,255,255,.16); color: #fff; }
-.btn-light { background: #fff; color: var(--ink); }
-.btn-ghost { color: var(--ink); background: transparent; padding-inline: .85rem; }
+.btn-primary:hover { --fill: linear-gradient(135deg, var(--copper), var(--copper-dk)); }
+
+.btn-outline { --edge: var(--line); --run: var(--copper); color: var(--ink); }
+.btn-outline:hover { --edge: var(--copper); color: var(--copper-dk); }
+
+.btn-outline-light {
+  --fill: linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06));
+  --edge: rgba(255,255,255,.45);
+  color: #fff;
+}
+.btn-outline-light:hover { --fill: linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16)); color: #fff; }
+
+.btn-light { --edge: rgba(21,24,28,.14); --run: var(--copper); color: var(--ink); }
+
+.btn-wa { --fill: linear-gradient(#25d366, #1da851); --edge: rgba(255,255,255,.35); }
+
+/* Quiet text link — no face, no border, so nothing to run around. */
+.btn-ghost {
+  --fill: none; --edge: transparent; --run: transparent;
+  color: var(--ink); padding-inline: .85rem; animation: none;
+}
 .btn-ghost:hover { color: var(--copper-dk); }
 .btn-lg { padding: 1.02rem 1.85rem; font-size: 1rem; }
 .btn-sm { padding: .55rem 1rem; font-size: .82rem; }
@@ -333,11 +374,11 @@ p { margin: 0 0 1rem; }
   content: ""; flex: 1; height: 1px; background: var(--line);
 }
 
-.btn-wa {
-  background: var(--wa); color: #fff;
-  box-shadow: 0 10px 24px -14px rgba(37,211,102,.9);
-}
-.btn-wa:hover { background: #1da851; color: #fff; }
+/* The fill and running edge live with the other button variants above; only
+   the shadow is specific to this one. A `background` shorthand here would
+   reset the layered background-clip/size and kill the running border. */
+.btn-wa { color: #fff; box-shadow: 0 10px 24px -14px rgba(37,211,102,.9); }
+.btn-wa:hover { --fill: linear-gradient(#1da851, #178f43); color: #fff; }
 .wa-glyph { width: 19px; height: 19px; flex: none; }
 
 /* -------------------------------------------------------------- trust strip */
