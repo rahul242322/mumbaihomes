@@ -282,7 +282,7 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  /* Fires once, 6 seconds after landing. Once only per session — after this
+  /* Fires once, 10 seconds after landing. Once only per session — after this
      the modal opens solely from the Enquire / Request buttons. */
   (function autoPopup() {
     var KEY = 'lead-popup-shown';
@@ -293,7 +293,7 @@
       if (!modal.hidden || document.body.classList.contains('submitted')) return;
       try { sessionStorage.setItem(KEY, '1'); } catch (err) {}
       openModal('Auto Popup', null, 'Enquire Now');
-    }, 6000);
+    }, 10000);
   })();
 
   /* ------------------------------------------------------------ lead forms */

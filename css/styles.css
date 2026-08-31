@@ -608,12 +608,7 @@ details p { margin: 0; padding: 1rem 1.2rem; color: var(--ink-2); font-size: .93
 .footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
 .brand-footer { color: #fff; }
 .brand-footer .brand-text small { color: rgba(255,255,255,.5); }
-.footer-person { margin: 1.1rem 0 .2rem; line-height: 1.4; }
-.footer-person strong { color: #fff; font-size: 1rem; }
-.footer-person span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--copper-lt); }
-.footer-contact { margin: .6rem 0 .5rem; font-size: .92rem; line-height: 1.9; }
-.footer-contact a { color: var(--copper-lt); text-decoration: none; }
-.footer-addr { font-size: .84rem; color: rgba(255,255,255,.5); max-width: 34ch; }
+.footer-addr { margin: 1.1rem 0 0; font-size: .84rem; color: rgba(255,255,255,.5); max-width: 34ch; }
 /* The logo is dark blue, so it needs a light chip to read on the dark footer. */
 .footer-credit { display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
 .footer-credit span { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.45); }

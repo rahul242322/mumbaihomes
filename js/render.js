@@ -445,15 +445,6 @@
     set('footer',
       '<div class="wrap footer-grid">' +
         '<div>' + logo('brand-footer') +
-          (c.personName
-            ? '<p class="footer-person"><strong>' + esc(c.personName) + '</strong>' +
-              (c.personTitle ? '<br><span>' + esc(c.personTitle) + '</span>' : '') + '</p>'
-            : '') +
-          '<p class="footer-contact">' +
-            '<a class="js-tel" href="#">' + esc(c.phone) + '</a><br>' +
-            '<a class="js-wa" data-source="Footer" href="#">WhatsApp the sales team</a>' +
-            (c.email ? '<br><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a>' : '') +
-          '</p>' +
           '<p class="footer-addr">' + esc(c.officeAddress) + '</p>' +
         '</div>' +
         (P.brand.developerLogo
