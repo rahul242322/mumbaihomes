@@ -430,17 +430,25 @@ p { margin: 0 0 1rem; }
 
 /* -------------------------------------------------------------------- plans */
 
-.plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.plan-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem; text-align: center; }
-.plan-thumb { position: relative; border-radius: var(--r-sm); overflow: hidden; margin-bottom: 1.1rem; }
-.plan-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: blur(5px) saturate(.85); transform: scale(1.06); }
-.plan-img.ph { aspect-ratio: 4/3; filter: none; transform: none; }
+/* Capped width and a wider thumb ratio — full-bleed 4:3 tiles made each card
+   roughly 620px tall for what is only a request prompt. */
+.plan-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem; max-width: 760px; margin-inline: auto;
+}
+.plan-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 1rem; text-align: center; }
+.plan-thumb { position: relative; border-radius: var(--r-sm); overflow: hidden; margin-bottom: 1rem; }
+.plan-img {
+  width: 100%; aspect-ratio: 16/10; max-height: 230px; object-fit: cover;
+  filter: blur(5px) saturate(.85); transform: scale(1.06);
+}
+.plan-img.ph { aspect-ratio: 16/10; max-height: 230px; min-height: 0; filter: none; transform: none; }
 .plan-overlay {
   position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
   background: rgba(21,24,28,.42); color: #fff; font-weight: 700;
-  font-size: .82rem; letter-spacing: .1em; padding: 1rem;
+  font-size: .76rem; letter-spacing: .09em; padding: 1rem;
 }
-.plan-card h3 { font-size: 1.15rem; margin-bottom: .9rem; }
+.plan-card h3 { font-size: 1.05rem; margin-bottom: .8rem; }
 
 /* ---------------------------------------------------------------- amenities */
 
