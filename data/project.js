@@ -28,8 +28,11 @@ window.PROJECT = {
     locality:    "Borivali West",
     city:        "Mumbai",
     tagline:     "S.V. Road Touch · Borivali West",
-    logo:          "",               // assets/logo.png — YOUR logo. Falls back to a monogram
-    monogram:      "M",
+    /* The MH mark cropped from the full lockup. The full version is gold on
+       black, which would read as a black box beside the white header — so the
+       mark keeps its dark ground as a rounded tile instead. */
+    logo:          "assets/mh-mark.webp",
+    monogram:      "M",             // fallback if the logo file is ever missing
     /* The builder's logo, shown only as a credit in the About and footer
        sections — never as this site's own mark. */
     developerLogo: "assets/veena-logo.webp",

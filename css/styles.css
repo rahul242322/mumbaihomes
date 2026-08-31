@@ -185,7 +185,12 @@ p { margin: 0 0 1rem; }
 .header-inner { display: flex; align-items: center; gap: 1.2rem; height: 88px; }
 
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; min-width: 0; }
-.brand-logo { height: 40px; width: auto; }
+/* Square tile, matching the monogram it replaces — the mark is gold on a dark
+   ground, so the tile is the point rather than something to key out. */
+.brand-logo {
+  width: 46px; height: 46px; flex: none; border-radius: 11px;
+  object-fit: cover; background: #0a0a0a;
+}
 .brand-mark {
   width: 42px; height: 42px; flex: none; border-radius: 11px;
   background: linear-gradient(140deg, var(--copper-lt), var(--copper-dk));
@@ -799,7 +804,7 @@ details p { margin: 0; padding: 1rem 1.2rem; color: var(--ink-2); font-size: .93
   /* Keep both logos on a 360px screen: shrink the lockup, drop the subtitle
      and the header CTA (the sticky bottom bar already carries the actions). */
   .header-inner { gap: .55rem; height: 72px; }
-  .brand-mark { width: 36px; height: 36px; font-size: 1.2rem; }
+  .brand-mark, .brand-logo { width: 38px; height: 38px; font-size: 1.2rem; }
   .brand-text strong { font-size: .9rem; }
   .brand-text small { display: none; }
   .co-brand img { height: 44px; }
