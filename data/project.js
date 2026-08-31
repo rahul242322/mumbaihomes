@@ -170,8 +170,11 @@ window.PROJECT = {
   /* Images render deliberately blurred behind a "Request" overlay — this is
      what drives plan-request leads. Leave src "" for a placeholder tile.     */
   plans: [
-    { title: "Master Plan Layout", cta: "Request Master Layout Plan", image: "" },
-    { title: "Unit Plan Layout",   cta: "Request Unit Layout Plans",  image: "" }
+    /* From the approved architectural drawings. Rendered deliberately blurred
+       behind the CTA — the readable copy is what the sales team sends on
+       request, which is the whole point of the section. */
+    { title: "Master Plan Layout", cta: "Request Master Layout Plan", image: "assets/plan-master.jpg" },
+    { title: "Unit Plan Layout",   cta: "Request Unit Layout Plans",  image: "assets/plan-unit.jpg" }
   ],
 
   /* ------------------------------------------------------------- amenities */
